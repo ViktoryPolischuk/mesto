@@ -17,3 +17,5 @@
 @import url(../blocks/gallery/__caption/gallery__caption.css);
 @import url(../blocks/gallery/__text/gallery__text.css);
 @import url(../blocks/gallery/__like-button/gallery__like-button.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
