@@ -1,4 +1,4 @@
-.gallery__card {
+.gallery-card {
   display: flex;
   flex-direction: column;
 }
