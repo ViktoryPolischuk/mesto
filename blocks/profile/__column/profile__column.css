@@ -8,6 +8,7 @@
 @media screen and (max-width: 1023px) {
   .profile__column {
     column-gap: 10px;
-    margin-top: 26px;
+    margin-top: 27px;
+    padding-left: 27px;
   }
 }
