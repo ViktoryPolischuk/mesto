@@ -10,7 +10,8 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;
-  margin-left: 244px;
+  /* margin-left: 244px; */
+  margin-left: 30px;
   flex-shrink: 0;
   }
 
