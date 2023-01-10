@@ -12,3 +12,7 @@
   /* background-size: 22px; */
   flex-shrink: 0;
 }
+
+.gallery-card__like-button:hover {
+  opacity: 0.5;
+}
