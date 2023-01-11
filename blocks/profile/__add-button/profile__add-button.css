@@ -12,10 +12,13 @@
   background-size: 22px;
   margin-left: 30px;
   flex-shrink: 0;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
   opacity: 0.6;
+  cursor: pointer;
+  transition: opacity .2s linear;
 }
 
 @media screen and (max-width: 1023px) {

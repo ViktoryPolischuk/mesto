@@ -4,8 +4,8 @@ let jobElement = document.querySelector('.profile__description');
 let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close-button');
 let formElement = popup.querySelector('.popup__container');
-let nameInput = popup.querySelector('.popup__input_name');
-let jobInput = popup.querySelector('.popup__input_job');
+let nameInput = popup.querySelector('.popup__input_type_name');
+let jobInput = popup.querySelector('.popup__input_type_job');
 
 function handleEditClick () {
   let name = nameElement.textContent;

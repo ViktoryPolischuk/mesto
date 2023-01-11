@@ -13,6 +13,6 @@
 }
 
 @supports (font-variation-settings: normal) {
-  .body { font-family: 'Inter var', sans-serif;
+  .root { font-family: 'Inter var', sans-serif;
   }
 }
