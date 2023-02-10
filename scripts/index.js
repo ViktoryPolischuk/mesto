@@ -117,7 +117,7 @@ const addCardButton = document.querySelector('.profile__add-button');
 
 const handleEditClick = () => {
   const popup = document.querySelector('.popup_edit-profile');
-  const formElement = popup.querySelector('.popup__container');
+  const formElement = popup.querySelector('.popup__form');
   const nameInput = popup.querySelector('.popup__input_type_name');
   const jobInput = popup.querySelector('.popup__input_type_job');
   const name = nameElement.textContent;
@@ -130,7 +130,7 @@ const handleEditClick = () => {
 
 const handleAddClick = () => {
   const popup = document.querySelector('.popup_add-place');
-  const formElement = popup.querySelector('.popup__container');
+  const formElement = popup.querySelector('.popup__form');
   const titleInput = popup.querySelector('.popup__input_type_title');
   const sourceInput = popup.querySelector('.popup__input_type_source');
   titleInput.value = '';
