@@ -83,8 +83,8 @@ const openPopup = (popup) => {
 const handleEditProfileSubmit = (evt) => {
   evt.preventDefault();
   const popup = evt.target.closest('.popup')
-  const nameInput = popup.querySelector('.popup__input_name');
-  const jobInput = popup.querySelector('.popup__input_job');
+  const nameInput = popup.querySelector('.popup__input_type_name');
+  const jobInput = popup.querySelector('.popup__input_type_job');
   const name = nameInput.value;
   const job = jobInput.value;
   if (name === '' || job === '') {
@@ -98,8 +98,8 @@ const handleEditProfileSubmit = (evt) => {
 const handleAddCardSubmit = (evt) => {
   evt.preventDefault();
   const popup = evt.target.closest('.popup')
-  const titleInput = popup.querySelector('.popup__input_title');
-  const sourceInput = popup.querySelector('.popup__input_source');
+  const titleInput = popup.querySelector('.popup__input_type_title');
+  const sourceInput = popup.querySelector('.popup__input_type_source');
   const title = titleInput.value;
   const source = sourceInput.value;
   if (title === '' || source === '') {
@@ -118,8 +118,8 @@ const addCardButton = document.querySelector('.profile__add-button');
 const handleEditClick = () => {
   const popup = document.querySelector('.popup_edit-profile');
   const formElement = popup.querySelector('.popup__container');
-  const nameInput = popup.querySelector('.popup__input_name');
-  const jobInput = popup.querySelector('.popup__input_job');
+  const nameInput = popup.querySelector('.popup__input_type_name');
+  const jobInput = popup.querySelector('.popup__input_type_job');
   const name = nameElement.textContent;
   const job = jobElement.textContent;
   nameInput.value = name;
@@ -131,8 +131,8 @@ const handleEditClick = () => {
 const handleAddClick = () => {
   const popup = document.querySelector('.popup_add-place');
   const formElement = popup.querySelector('.popup__container');
-  const titleInput = popup.querySelector('.popup__input_title');
-  const sourceInput = popup.querySelector('.popup__input_source');
+  const titleInput = popup.querySelector('.popup__input_type_title');
+  const sourceInput = popup.querySelector('.popup__input_type_source');
   titleInput.value = '';
   sourceInput.value = '';
   formElement.addEventListener('submit', handleAddCardSubmit);
