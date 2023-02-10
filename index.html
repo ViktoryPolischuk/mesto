@@ -23,55 +23,12 @@
       </div>
       <button class="profile__add-button"></button>
     </section>
-    <section class="gallery" aria-label="Фотогалерея">
-      <div class="gallery-card">
-        <img class="gallery-card__image" src="./images/karachaevo.jpg" alt="Старая крепость">
-        <div class="gallery-card__caption">
-          <p class="gallery-card__text">Карачаевск</p>
-          <button class="gallery-card__like-button"></button>
-        </div>
-      </div>
-      <div class="gallery-card">
-        <img class="gallery-card__image" src="./images/elbrus.jpg" alt="Вид на гору">
-        <div class="gallery-card__caption">
-          <p class="gallery-card__text">Гора Эльбрус</p>
-          <button class="gallery-card__like-button"></button>
-        </div>
-      </div>
-      <div class="gallery-card">
-        <img class="gallery-card__image" src="./images/dombai.jpg" alt="Горы">
-        <div class="gallery-card__caption">
-          <p class="gallery-card__text">Домбай</p>
-          <button class="gallery-card__like-button"></button>
-        </div>
-      </div>
-      <div class="gallery-card">
-        <img class="gallery-card__image" src="./images/dombai.jpg" alt="Горы">
-        <div class="gallery-card__caption">
-          <p class="gallery-card__text">Домбай</p>
-          <button class="gallery-card__like-button"></button>
-        </div>
-      </div>
-      <div class="gallery-card">
-        <img class="gallery-card__image" src="./images/karachaevo.jpg" alt="Старая крепость">
-        <div class="gallery-card__caption">
-          <p class="gallery-card__text">Карачаевск</p>
-          <button class="gallery-card__like-button"></button>
-        </div>
-      </div>
-      <div class="gallery-card">
-        <img class="gallery-card__image" src="./images/elbrus.jpg" alt="Вид на гору">
-        <div class="gallery-card__caption">
-          <p class="gallery-card__text">Гора Эльбрус</p>
-          <button class="gallery-card__like-button"></button>
-        </div>
-      </div>
-    </section>
+    <section class="gallery" aria-label="Фотогалерея"></section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_edit-profile">
     <form class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <input class="popup__input popup__input_name" type="text" name="name" placeholder="Имя">
@@ -80,6 +37,34 @@
       <button class="popup__save-button">Сохранить</button>
     </form>
   </div>
+  <div class="popup popup_add-place">
+    <form class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <input class="popup__input popup__input_title" type="text" name="title" placeholder="Название">
+      <input class="popup__input popup__input_source" type="text" name="source" placeholder="Ссылка на картинку">
+      <button class="popup__close-button"></button>
+      <button class="popup__save-button">Сохранить</button>
+    </form>
+  </div>
+  <div class="popup popup_gallery-card">
+    <div class="popup__image-container">
+      <figure class="popup__figure">
+        <img class="popup__image" src="#" alt="Увеличенная фотография">
+        <figcaption class="popup__image-caption"></figcaption>
+      </figure>
+      <button class="popup__close-button"></button>
+    </div>
+  </div>
+  <template id="card">
+    <div class="gallery-card">
+      <img class="gallery-card__image" alt="Фотография">
+      <div class="gallery-card__caption">
+        <p class="gallery-card__text"></p>
+        <button class="gallery-card__like-button"></button>
+      </div>
+      <button class="gallery-card__delete-button"></button>
+    </div>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
