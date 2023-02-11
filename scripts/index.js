@@ -74,6 +74,7 @@ const getCardElement = (card) => {
   const deleteButton = cardElement.querySelector('.gallery-card__delete-button');
   const likeButton = cardElement.querySelector('.gallery-card__like-button');
   cardImage.src = card.link;
+  cardImage.alt = card.name;
   cardText.textContent = card.name;
   deleteButton.addEventListener('click', handleDelete);
   likeButton.addEventListener('click', handleLike);
