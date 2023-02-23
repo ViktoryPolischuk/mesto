@@ -25,6 +25,15 @@ const initialCards = [
   }
 ];
 
+const formConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 const cardTemplate = document.querySelector('#card').content;
 const galleryContainer = document.querySelector('.gallery');
 
@@ -50,7 +59,6 @@ const profileForm = profilePopup.querySelector('.popup__form');
 const profileNameInput = profilePopup.querySelector('.popup__input_type_name');
 const profileJobInput = profilePopup.querySelector('.popup__input_type_job');
 const profilePopupCloseButton = profilePopup.querySelector('.popup__close-button');
-
 
 const handleDelete = (evt) => {
   evt.target.closest('.gallery-card').remove();
@@ -134,10 +142,12 @@ const handleEditProfileClick = () => {
   const job = jobElement.textContent;
   profileNameInput.value = name;
   profileJobInput.value = job;
+  hideFormErrors(profileForm, formConfig);
   openPopup(profilePopup);
 }
 
 const handleAddCardClick = () => {
+  hideFormErrors(cardForm, formConfig);
   openPopup(cardPopup);
 }
 
@@ -151,7 +161,6 @@ cardPopupCloseButton.addEventListener('click', handlePopupCloseClick);
 profilePopupCloseButton.addEventListener('click', handlePopupCloseClick);
 imagePopupCloseButton.addEventListener('click', handlePopupCloseClick);
 
-
-
+enableValidation(formConfig);
 
 

@@ -32,9 +32,15 @@
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <button class="popup__close-button" type="button"></button>
-      <form class="popup__form">
-        <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя">
-        <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="О себе">
+      <form class="popup__form" novalidate>
+        <label class="popup__field">
+          <input class="popup__input popup__input_type_name" type="text" id="fullName" name="fullName" placeholder="Имя" minlength="2" maxlength="40" required>
+          <span class="popup__input-error fullName-error"></span>
+        </label>
+        <label class="popup__field">
+          <input class="popup__input popup__input_type_job" type="text" id ="job" name="job" placeholder="О себе" minlength="2" maxlength="200" required>
+          <span class="popup__input-error job-error"></span>
+        </label>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -69,6 +75,7 @@
       <button class="gallery-card__delete-button"></button>
     </div>
   </template>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
