@@ -46,19 +46,16 @@ const jobElement = document.querySelector('.profile__description');
 const imagePopup = document.querySelector('.popup_gallery-card');
 const imagePopupImage = imagePopup.querySelector('.popup__image');
 const imagePopupText = imagePopup.querySelector('.popup__image-caption');
-const imagePopupCloseButton = imagePopup.querySelector('.popup__close-button');
 
 const cardPopup = document.querySelector('.popup_add-place');
 const cardForm = cardPopup.querySelector('.popup__form');
 const cardTitleInput = cardPopup.querySelector('.popup__input_type_title');
 const cardSourceInput = cardPopup.querySelector('.popup__input_type_source');
-const cardPopupCloseButton = cardPopup.querySelector('.popup__close-button');
 
 const profilePopup = document.querySelector('.popup_edit-profile');
 const profileForm = profilePopup.querySelector('.popup__form');
 const profileNameInput = profilePopup.querySelector('.popup__input_type_name');
 const profileJobInput = profilePopup.querySelector('.popup__input_type_job');
-const profilePopupCloseButton = profilePopup.querySelector('.popup__close-button');
 
 const handleDelete = (evt) => {
   evt.target.closest('.gallery-card').remove();
@@ -99,16 +96,28 @@ initialCards.forEach((card) => {
   renderCard(galleryContainer, card);
 })
 
+const handleEscKeydown = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEscKeydown);
 }
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleEscKeydown);
 }
 
 const handlePopupCloseClick = (evt) => {
-  closePopup(evt.target.closest('.popup'));
+  if (evt.target.classList.contains('popup') ||
+      evt.target.classList.contains('popup__close-button')){
+    closePopup(evt.target.closest('.popup'));
+  }
 }
 
 const handleEditProfileSubmit = (evt) => {
@@ -157,9 +166,9 @@ addCardButton.addEventListener('click', handleAddCardClick);
 profileForm.addEventListener('submit', handleEditProfileSubmit);
 cardForm.addEventListener('submit', handleAddCardSubmit);
 
-cardPopupCloseButton.addEventListener('click', handlePopupCloseClick);
-profilePopupCloseButton.addEventListener('click', handlePopupCloseClick);
-imagePopupCloseButton.addEventListener('click', handlePopupCloseClick);
+cardPopup.addEventListener('click', handlePopupCloseClick);
+profilePopup.addEventListener('click', handlePopupCloseClick);
+imagePopup.addEventListener('click', handlePopupCloseClick);
 
 enableValidation(formConfig);
 
