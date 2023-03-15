@@ -31,9 +31,14 @@ const handleCardImageClick = (card) => {
   openPopup(imagePopup);
 }
 
-const renderCard = (galleryContainer, data, handleCardImageClick) => {
+const createCard = (data, handleCardImageClick) => {
   const card = new Card(data, '#card', handleCardImageClick);
   const cardElement = card.getCardElement();
+  return cardElement;
+}
+
+const renderCard = (galleryContainer, data, handleCardImageClick) => {
+  const cardElement = createCard(data, handleCardImageClick);
   galleryContainer.prepend(cardElement);
 }
 
@@ -81,10 +86,9 @@ const handleAddCardSubmit = (evt) => {
     return
   }
   const card = {name: title, link: source};
-  renderCard(galleryContainer, card);
+  renderCard(galleryContainer, card, handleCardImageClick);
   closePopup(cardPopup);
-  cardTitleInput.value = '';
-  cardSourceInput.value = '';
+  evt.target.reset();
 }
 
 const handleEditProfileClick = () => {
@@ -107,9 +111,10 @@ addCardButton.addEventListener('click', handleAddCardClick);
 profileForm.addEventListener('submit', handleEditProfileSubmit);
 cardForm.addEventListener('submit', handleAddCardSubmit);
 
-cardPopup.addEventListener('click', handlePopupCloseClick);
-profilePopup.addEventListener('click', handlePopupCloseClick);
-imagePopup.addEventListener('click', handlePopupCloseClick);
+const popups = Array.from(document.querySelectorAll('.popup'));
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', handlePopupCloseClick);
+})
 
 cardFormValidator.enableValidation();
 profileFormValidator.enableValidation();
