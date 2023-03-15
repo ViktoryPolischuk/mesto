@@ -1,69 +1,28 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import Card from './Card.js'
+import FormValidator from './FormValidator.js';
+import {
+  initialCards,
+  formConfig,
+  galleryContainer,
+  editButton,
+  addCardButton,
+  nameElement,
+  jobElement,
+  imagePopup,
+  imagePopupImage,
+  imagePopupText,
+  cardPopup,
+  cardForm,
+  cardTitleInput,
+  cardSourceInput,
+  profilePopup,
+  profileForm,
+  profileNameInput,
+  profileJobInput
+} from './constants.js';
 
-const formConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const cardTemplate = document.querySelector('#card').content;
-const galleryContainer = document.querySelector('.gallery');
-
-const editButton = document.querySelector('.profile__edit-button');
-const addCardButton = document.querySelector('.profile__add-button');
-
-const nameElement = document.querySelector('.profile__author');
-const jobElement = document.querySelector('.profile__description');
-
-const imagePopup = document.querySelector('.popup_gallery-card');
-const imagePopupImage = imagePopup.querySelector('.popup__image');
-const imagePopupText = imagePopup.querySelector('.popup__image-caption');
-
-const cardPopup = document.querySelector('.popup_add-place');
-const cardForm = cardPopup.querySelector('.popup__form');
-const cardTitleInput = cardPopup.querySelector('.popup__input_type_title');
-const cardSourceInput = cardPopup.querySelector('.popup__input_type_source');
-
-const profilePopup = document.querySelector('.popup_edit-profile');
-const profileForm = profilePopup.querySelector('.popup__form');
-const profileNameInput = profilePopup.querySelector('.popup__input_type_name');
-const profileJobInput = profilePopup.querySelector('.popup__input_type_job');
-
-const handleDelete = (evt) => {
-  evt.target.closest('.gallery-card').remove();
-}
-
-const handleLike = (evt) => {
-  evt.target.classList.toggle('gallery-card__like-button_active');
-}
+const cardFormValidator = new FormValidator(formConfig, cardForm);
+const profileFormValidator = new FormValidator(formConfig, profileForm);
 
 const handleCardImageClick = (card) => {
   imagePopupImage.src = card.link;
@@ -72,29 +31,11 @@ const handleCardImageClick = (card) => {
   openPopup(imagePopup);
 }
 
-const getCardElement = (card) => {
-  const cardElement = cardTemplate.querySelector('.gallery-card').cloneNode(true);
-  const cardImage = cardElement.querySelector('.gallery-card__image')
-  const cardText = cardElement.querySelector('.gallery-card__text')
-  const deleteButton = cardElement.querySelector('.gallery-card__delete-button');
-  const likeButton = cardElement.querySelector('.gallery-card__like-button');
-  cardImage.src = card.link;
-  cardImage.alt = card.name;
-  cardText.textContent = card.name;
-  deleteButton.addEventListener('click', handleDelete);
-  likeButton.addEventListener('click', handleLike);
-  cardImage.addEventListener('click', () => handleCardImageClick(card));
-  return cardElement;
-}
-
-const renderCard = (galleryContainer, card) => {
-  const cardElement = getCardElement(card);
+const renderCard = (galleryContainer, data, handleCardImageClick) => {
+  const card = new Card(data, '#card', handleCardImageClick);
+  const cardElement = card.getCardElement();
   galleryContainer.prepend(cardElement);
 }
-
-initialCards.forEach((card) => {
-  renderCard(galleryContainer, card);
-})
 
 const handleEscKeydown = (evt) => {
   if (evt.key === 'Escape') {
@@ -151,12 +92,12 @@ const handleEditProfileClick = () => {
   const job = jobElement.textContent;
   profileNameInput.value = name;
   profileJobInput.value = job;
-  hideFormErrors(profileForm, formConfig);
+  profileFormValidator.hideErrors();
   openPopup(profilePopup);
 }
 
 const handleAddCardClick = () => {
-  hideFormErrors(cardForm, formConfig);
+  cardFormValidator.hideErrors();
   openPopup(cardPopup);
 }
 
@@ -170,6 +111,11 @@ cardPopup.addEventListener('click', handlePopupCloseClick);
 profilePopup.addEventListener('click', handlePopupCloseClick);
 imagePopup.addEventListener('click', handlePopupCloseClick);
 
-enableValidation(formConfig);
+cardFormValidator.enableValidation();
+profileFormValidator.enableValidation();
+
+initialCards.forEach((data) => {
+  renderCard(galleryContainer, data, handleCardImageClick);
+})
 
 
