@@ -34,25 +34,18 @@ export const formConfig = {
   errorClass: 'popup__error_visible'
 };
 
-export const galleryContainer = document.querySelector('.gallery');
+export const galleryContainerSelector = '.gallery';
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addCardButton = document.querySelector('.profile__add-button');
 
-export const nameElement = document.querySelector('.profile__author');
-export const jobElement = document.querySelector('.profile__description');
+export const nameSelector = '.profile__author';
+export const jobSelector = '.profile__description';
 
-export const imagePopup = document.querySelector('.popup_gallery-card');
-export const imagePopupImage = imagePopup.querySelector('.popup__image');
-export const imagePopupText = imagePopup.querySelector('.popup__image-caption');
+export const imagePopupSelector = '.popup_gallery-card';
 
-export const cardPopup = document.querySelector('.popup_add-place');
-export const cardForm = cardPopup.querySelector('.popup__form');
-export const cardTitleInput = cardPopup.querySelector('.popup__input_type_title');
-export const cardSourceInput = cardPopup.querySelector('.popup__input_type_source');
+export const cardPopupSelector = '.popup_add-place';
+export const cardForm = document.querySelector('.popup__form_add-place');
 
-export const profilePopup = document.querySelector('.popup_edit-profile');
-export const profileForm = profilePopup.querySelector('.popup__form');
-export const profileNameInput = profilePopup.querySelector('.popup__input_type_name');
-export const profileJobInput = profilePopup.querySelector('.popup__input_type_job');
-
+export const profilePopupSelector = '.popup_edit-profile';
+export const profileForm = document.querySelector('.popup__form_edit-profile');
