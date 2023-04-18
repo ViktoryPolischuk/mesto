@@ -6,6 +6,8 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__column/profile__column.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__avatar-image/profile__avatar-image.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__author/profile__author.css);
 @import url(../blocks/profile/__description/profile__description.css);
@@ -16,9 +18,12 @@
 @import url(../blocks/gallery-card/__image/gallery-card__image.css);
 @import url(../blocks/gallery-card/__caption/gallery-card__caption.css);
 @import url(../blocks/gallery-card/__text/gallery-card__text.css);
+@import url(../blocks/gallery-card/__like/gallery-card__like.css);
 @import url(../blocks/gallery-card/__like-button/gallery-card__like-button.css);
 @import url(../blocks/gallery-card/__like-button/_active/gallery-card__like-button_active.css);
+@import url(../blocks/gallery-card/__like-count/gallery-card__like-count.css);
 @import url(../blocks/gallery-card/__delete-button/gallery-card__delete-button.css);
+@import url(../blocks/gallery-card/__delete-button/_visible/gallery-card__delete-button_visible.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
