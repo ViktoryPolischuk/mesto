@@ -31,7 +31,6 @@ const api = new Api(apiConfig);
 const userInfo = new UserInfo({nameSelector, jobSelector, avatarSelector});
 
 let userId;
-let cardList;
 
 const handleEditProfileSubmit = ({name, job}) => {
   profilePopup.setButtonLoading('Сохранение...');
@@ -167,6 +166,8 @@ cardFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
+const cardList = new Section({renderer: renderCard}, galleryContainerSelector);
+
 Promise.all([
   api.getUserInfo(),
   api.getInitialCards()
@@ -175,9 +176,7 @@ Promise.all([
     userId = initialUserInfo._id;
     userInfo.setUserInfo({name: initialUserInfo.name, job: initialUserInfo.about});
     userInfo.setUserAvatar(initialUserInfo.avatar);
-
-    cardList = new Section({items: initialCards.reverse(), renderer: renderCard}, galleryContainerSelector);
-    cardList.renderItems();
+    cardList.renderItems(initialCards.reverse());
   })
   .catch((err) => {
     console.log(err);
