@@ -48,9 +48,9 @@ const handleEditProfileSubmit = ({name, job}) => {
     });
 }
 
-const handleEditAvatarSubmit = ({source}) => {
+const handleEditAvatarSubmit = ({avatar}) => {
   avatarPopup.setButtonLoading('Сохранение...');
-  api.editUserAvatar(source)
+  api.editUserAvatar(avatar)
     .then((data) => {
       userInfo.setUserAvatar(data.avatar);
       avatarPopup.close();
